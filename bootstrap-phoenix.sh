@@ -1,8 +1,9 @@
 #!/bin/bash
 
-: ${HADOOP_PREFIX:=/usr/local/hadoop}
-: ${ZOO_HOME:=/usr/local/zookeeper}
-: ${HBASE_HOME:=/usr/local/hbase}
+: ${HADOOP_PREFIX:=/opt/hadoop}
+#: ${ZOO_HOME:=/opt/zookeeper}
+: ${HBASE_HOME:=/opt/hbase}
+: ${PHOENIX_HOME:=/opt/phoenix}
 
 rm /tmp/*.pid
 
@@ -10,6 +11,9 @@ rm /tmp/*.pid
 cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
 service sshd start
+
+export JAVA_HOME=/opt/jre
+
 $HADOOP_PREFIX/sbin/start-dfs.sh
 $HADOOP_PREFIX/sbin/start-yarn.sh
 $HBASE_HOME/bin/start-hbase.sh

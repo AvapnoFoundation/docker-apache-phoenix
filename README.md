@@ -7,17 +7,17 @@ to provide an SQL interface. This image uses the Phoenix Avatica queryserver to 
 Apache Phoenix is a SQL skin over HBase delivered as a client-embedded JDBC driver targeting low latency queries over HBase data. Apache Phoenix takes your SQL query, compiles it into a series of HBase scans, and orchestrates the running of those scans to produce regular JDBC result sets. The table metadata is stored in an HBase table and versioned, such that snapshot queries over prior versions will automatically use the correct schema. Direct use of the HBase API, along with coprocessors and custom filters, results in performance on the order of milliseconds for small queries, or seconds for tens of millions of rows.
 
 ###Versions
-Apache Hadoop - 2.7.0  
-Apache HBase - 1.0.x, 1.1.x
-Apache Phoenix - 4.4.0+
+Apache Hadoop - 2.7.2
+Apache HBase - 1.2.5
+Apache Phoenix - 4.10.0
 
 ###Launch
 The queryserver can be accessed via the host ip and the port 8765.
 ####Foreground
-`docker run -it --name phoenix -p 8765:8765 kliew/phoenix-queryserver`
+`docker run -it --name phoenix -p 8765:8765 avapno/apache-phoenix`
 
 ####Background
-`docker run -d --name phoenix -p 8765:8765 kliew/phoenix-queryserver`
+`docker run -d --name phoenix -p 8765:8765 avapno/apache-phoenix`
 
 ###sqlline
 `docker exec -it phoenix -sqlline`
@@ -27,11 +27,5 @@ Docker 1.10 or higher is required to build the image (to use `--build-arg`).
 
 To build a specific version
 ```
-docker build -t kliew/phoenix-queryserver --build-arg PHOENIX_VERSION=4.7.0 .
+docker build -t avapno/apache-phoenix --build-arg PHOENIX_VERSION=4.7.0 .
 ```
-
-#### Build Parameters
-* PHOENIX_VERSION
-* HBASE_MAJORMINOR
-* HBASE_PATCH
-* ZOOKEEPER_VERSION

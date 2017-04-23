@@ -29,4 +29,12 @@
     <name>hbase.cluster.distributed</name>
     <value>true</value>
   </property>
+  <property>
+    <name>phoenix.functions.allowUserDefinedFunctions</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>lucene.path</name>
+    <value>${hbase.rootdir}/lucene</value>
+  </property>
 </configuration>
